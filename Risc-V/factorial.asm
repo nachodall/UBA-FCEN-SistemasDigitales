@@ -1,5 +1,6 @@
 .text:
-    li a0, 3
+    la t0, n
+    lw a0, 0(t0)
     jal ra, factorial   
     li a7, 10 
     ecall 
@@ -21,5 +22,5 @@
             addi a0, zero, 1
             ret
 .data:
-    input_adress: .word 0x00000003
+    n: .word 0x00000005
   
