@@ -2,7 +2,7 @@
     la a0, size #me guardo en a0 la dir del el tamaño del arreglo 
     lw a0, 0(a0) #ahora si tengo a0
     la a1, arr #me guardo la dir. de memo del primer elem. de arr 
-    li a2, -2147483648 #uso a2 para el maximo, lo inicializo con el primer valor
+    li a2, -2147483648 #uso a2 para el maximo, lo inicializo con el mínimo valor
 
     loop:
     beq a0, zero, epilogo  #si el tamaño es igual a 0, termine
