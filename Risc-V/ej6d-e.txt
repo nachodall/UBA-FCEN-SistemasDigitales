@@ -1,0 +1,7 @@
+Para esto calculo cuanto espacio extra necesita mi problema.
+Sabemos que en cada llamado recursivo pedimos espacio en la pila, en general pedimos 16 bytes.
+Luego al llamar a factorial(3) pedimos espacio 3 veces hasta llegar a factorial(0) que es caso base,
+
+Luego nuestro espacio es = x + 3 * 16bytes = x + 48 bytes
+
+Claramente si la implementación fuese iterativa requeriria menos espacio pues no hacemos llamados a la pila. Ocuparia x bytes.

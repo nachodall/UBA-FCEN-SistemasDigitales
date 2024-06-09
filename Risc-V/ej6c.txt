@@ -1,0 +1,18 @@
+Las implementaciones presentadas en RISC-V para calcular el factorial y la multiplicación tienen una limitación significativa cuando se devuelve el resultado en un único registro (como a0). El problema principal radica en la capacidad de almacenamiento de los registros y el rango de los valores que pueden manejar.
+
+Problemas con el uso de un único registro
+Desbordamiento de Enteros (Integer Overflow):
+
+Los registros en RISC-V (al menos en la versión de 32 bits) pueden almacenar un valor máximo de 2^31 - 1 (2147483647) para números positivos. Si el resultado de la operación factorial excede este valor, el resultado será incorrecto debido al desbordamiento.
+Limitaciones de tamaño para el factorial:
+
+El factorial crece muy rápidamente. Por ejemplo, 13! (factorial de 13) es 6227020800, que ya excede el rango de un entero de 32 bits. Por lo tanto, la implementación fallará para cualquier número mayor que 12, ya que el resultado no cabrá en un único registro de 32 bits.
+Ejemplos de entradas que fallan
+Factorial de números mayores a 12 en RISC-V de 32 bits:
+
+13! = 6227020800 (fuera del rango de 32 bits)
+14! = 87178291200 (fuera del rango de 32 bits)
+Cualquier número mayor también fallará.
+Multiplicaciones que resulten en un valor mayor que 2^31 - 1:
+
+Por ejemplo, multiplicando 100000 por 100000 da 10000000000, que también está fuera del rango.
