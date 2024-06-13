@@ -25,7 +25,7 @@ fibo:
     mv t1, a0                # Mover el resultado a t1
 
     # Restaurar a0 para la segunda llamada recursiva
-    lw a0, 0(sp)             # Restaurar a0 desde el stack
+    lw a0, 4(sp)             # Restaurar a0 desde el stack
     addi a0, a0, -2          # n = n - 2
     jal ra, fibo             # Llamar a fibo recursivamente
 
