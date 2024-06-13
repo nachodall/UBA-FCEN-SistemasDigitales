@@ -21,16 +21,17 @@ fibo:
     addi a0, a0, -1          # n = n - 1
     jal ra, fibo             # Llamar a fibo recursivamente
 
-    # Guardar el resultado de Fib(n-1) en un registro temporal
-    mv t1, a0                # Mover el resultado a t1
+    # Guardar el resultado de Fib(n-1) en stack
+    sw a0, 8(sp)              # Mover el resultado a t1
 
     # Restaurar a0 para la segunda llamada recursiva
-    lw a0, 4(sp)             # Restaurar a0 desde el stack
+    lw a0, 0(sp)             # Restaurar a0 desde el stack
     addi a0, a0, -2          # n = n - 2
     jal ra, fibo             # Llamar a fibo recursivamente
 
     # Sumar los resultados de las dos llamadas recursivas
-    add a0, a0, t1           # a0 = resultado de Fib(n-1) + resultado de Fib(n-2)
+    lw a1, 8(sp)
+    add a0, a0, a1           # a0 = resultado de Fib(n-1) + resultado de Fib(n-2)
 
     # Restaurar ra y el stack
     lw ra, 4(sp)             # Restaurar ra desde el stack
@@ -51,4 +52,4 @@ epilogo:
     ecall 
 
 .data
-n: .word 0x5                # Definir el valor de n
+n: .word 0x9                # Definir el valor de n
